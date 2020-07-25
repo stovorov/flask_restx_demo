@@ -1,0 +1,1 @@
+reveal-md presentation.md  --highlight-theme tomorrow-night --static .
