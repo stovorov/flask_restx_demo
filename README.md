@@ -7,4 +7,5 @@ https://flask-restx.readthedocs.io/en/latest/
 make venv
 source venv/bin/activate
 python app.py
+python app2.py    # more examples
 ```
