@@ -1,4 +1,6 @@
+from datetime import datetime
 from dataclasses import dataclass
+from typing import Union
 
 from werkzeug.datastructures import ImmutableMultiDict
 
@@ -20,8 +22,9 @@ def get_device_configuration(device_name):
 
 @dataclass
 class NewDevice:
-    id: str
+    id: Union[str, int]
     params: str
+    creation_date: datetime = datetime.now()
 
 
 def create_new_device(device_data):
@@ -41,4 +44,4 @@ def get_aggregated_devices(arguments: ImmutableMultiDict):
     # with db_session() as session:
     #       ... sql query
     #       return query.....all()
-    return [NewDevice('some_id', 'some_params'), NewDevice('some_other_id', 'some_other_params')]
+    return [NewDevice(123, 'some_params'), NewDevice('some_other_id', 'some_other_params')]

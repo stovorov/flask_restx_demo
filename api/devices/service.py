@@ -22,11 +22,11 @@ class DevicesList(Resource):
         request_data = request.get_json()
         created_device = create_new_device(request_data)
         if created_device:
-            return created_device, 200
+            return created_device
         return None, 400
 
 
-@ns.route('/configuration/<string:device_name>')
+@ns.route('/configuration/<device_name>')
 class DeviceConfiguration(Resource):
 
     @staticmethod
@@ -37,7 +37,7 @@ class DeviceConfiguration(Resource):
 
 
 # @ns.hide
-@ns.route('/legacy_configuration/<string:device_name>')
+@ns.route('/legacy_configuration/<device_name>')
 class LegacyDeviceConfiguration(Resource):
 
     @staticmethod
