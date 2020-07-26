@@ -1,6 +1,6 @@
 from typing import List, Tuple, Optional
 
-from flask import request
+from flask import request, redirect
 from flask_restx import Resource
 
 from api.devices.business import get_list_of_devices, get_device_configuration, create_new_device, NewDevice, \
@@ -36,6 +36,7 @@ class DeviceConfiguration(Resource):
         return get_device_configuration(device_name)
 
 
+# @ns.deprecated
 # @ns.hide
 @ns.route('/legacy_configuration/<device_name>')
 class LegacyDeviceConfiguration(Resource):
@@ -44,7 +45,7 @@ class LegacyDeviceConfiguration(Resource):
     def get(device_name: str) -> Tuple[Optional[str], int]:
         if not device_name.startswith('device'):
             return None, 400
-        return get_device_configuration(device_name)
+        return redirect('/{}/configuration/{}'.format(ns.name, device_name))
 
 
 @ns.route('/aggregated_devices')
