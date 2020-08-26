@@ -9,3 +9,5 @@ source venv/bin/activate
 python app.py
 python app2.py    # more examples
 ```
+
+https://stovorov.github.io/flask_restx_demo/presentation/#/
